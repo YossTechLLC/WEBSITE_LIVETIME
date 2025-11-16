@@ -5,10 +5,13 @@ A minimal, cinematic landing page for Emily Buckalew, Atlanta Realtor with Metho
 ## Features
 
 ### Visual Design
-- **Pixel-Art Animated Background**: Night-time Atlanta cityscape that transitions through:
-  - Night phase with twinkling stars and glowing building windows
-  - Sunrise phase with warm oranges and pinks
-  - Morning phase with bright blue skies
+- **Aerial City Panning Animation**: Beautiful top-down view of Atlanta cityscape with:
+  - Seamless infinite horizontal and vertical panning
+  - 90-second full day-night cycle (night → dawn → day → sunset → dusk)
+  - Three-layer parallax depth effect for realistic aerial perspective
+  - Twinkling stars at night that fade at dawn
+  - Floating clouds during daytime
+  - Dynamic window lighting that glows at night and dims during day
 - **Minimalist UI**: Clean, modern design with three simple sections
 - **Responsive Design**: Mobile-first layout that works beautifully on all devices
 - **Cinematic Atmosphere**: Dark overlay with semi-transparent content cards
@@ -20,9 +23,11 @@ A minimal, cinematic landing page for Emily Buckalew, Atlanta Realtor with Metho
 
 ### Animation Details
 - **Canvas-based rendering**: Pure vanilla JavaScript, no libraries
-- **60-second cycle**: Smooth transitions between day phases
-- **Performance optimized**: Pre-generated buildings, time-based animation
-- **Pixel-art aesthetic**: Retro gaming-inspired visual style
+- **90-second full day-night cycle**: Smooth color transitions through all phases of day
+- **Infinite seamless loop**: City grid pattern wraps perfectly for endless panning
+- **3-layer parallax system**: Far, mid, and near layers with different speeds create depth
+- **Performance optimized**: Pre-generated city grid, efficient culling of off-screen elements
+- **Aerial perspective**: Top-down city view with buildings, streets, and parks
 - **Responsive canvas**: Automatically adjusts to viewport size
 
 ### Technical
@@ -146,31 +151,39 @@ Modify `public/css/style.css` to adjust:
 ### Animation
 
 Update `public/js/script.js` to customize:
-- Cycle duration (default: 60 seconds)
-- Building count and sizes
-- Star count and distribution
-- Color gradients for each phase
-- Sun position and size
+- Cycle duration (default: 90 seconds)
+- Pan speed and direction
+- Number of city layers and depth
+- Building density and grid size
+- Color gradients for each time phase
+- Star and cloud quantities
 
 ## Animation Details
 
-The pixel-art city animation works by:
+The aerial city panning animation works by:
 
-1. **Pre-generating buildings** on page load with random heights/widths
-2. **Creating window patterns** as small pixel blocks on each building
-3. **Cycling through three phases**:
-   - Night (0-33%): Dark sky, bright stars, glowing windows
-   - Sunrise (33-66%): Orange/pink gradients, fading stars, rising sun
-   - Morning (66-100%): Blue sky, dim windows, high sun
-4. **Interpolating colors** smoothly between phases
-5. **Animating window glow** with sine wave variations
+1. **Pre-generating city grid** on page load with random buildings, streets, and parks
+2. **Three parallax layers** at different depths (0.4x, 0.7x, 1.0x) moving at different speeds
+3. **Seamless infinite loop** achieved by wrapping coordinates in a virtual city space
+4. **Day-night cycle through 5 phases**:
+   - Night (0-25%): Deep night sky, twinkling stars, full window glow
+   - Dawn (25-45%): Sunrise colors, stars fade, windows dim
+   - Day (45-70%): Bright sky, clouds appear, minimal window glow
+   - Sunset (70-85%): Warm sunset colors, slight window glow
+   - Dusk (85-100%): Return to night, stars reappear, windows light up
+5. **Smooth color interpolation** between all phases for gradual transitions
+6. **Dynamic lighting** with windows that pulse subtly based on sine waves
+7. **Diagonal panning** combining horizontal and vertical movement for cinematic effect
 
 ## Performance
 
 The website is optimized for performance:
-- Canvas animation uses `requestAnimationFrame`
-- Buildings pre-generated (not randomized per frame)
-- Only gradients and lighting recalculated each frame
+- Canvas animation uses `requestAnimationFrame` for smooth 60fps
+- City grid pre-generated on load (not randomized per frame)
+- Efficient viewport culling - only visible buildings are drawn
+- Parallax layers update positions without recalculating buildings
+- Only gradients, lighting, and positions recalculated each frame
+- Seamless wrapping uses modulo math for infinite loop
 - Nginx serves static files efficiently
 - Gzip compression enabled
 - No external dependencies or libraries
