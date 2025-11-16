@@ -1,0 +1,38 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+# using gcloud. It follows the same syntax as .gitignore
+
+.git
+.gitignore
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Development files
+*.md
+!DEPLOYMENT.md
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test files
+test/
+*.test.js
+*.spec.js
+
+# Scripts (not needed in container)
+start.sh
+stop.sh
+deploy-gcloud.sh
