@@ -1,54 +1,43 @@
-# Emily B Realty - Premium Luxury Real Estate Website
+# Emily Buckalew - Atlanta Realtor Landing Page
 
-A stunning, fully-featured real estate website for Emily B Realty, showcasing luxury properties with modern design, advanced interactions, and premium user experience.
+A minimal, cinematic landing page for Emily Buckalew, Atlanta Realtor with Method Real Estate Advisors. Features a stunning pixel-art animated city background with a smooth day-night cycle.
 
 ## Features
 
-### Design & UI
-- **Premium Design System**: Sophisticated color palette with gold accents and modern typography
-- **Responsive Design**: Pixel-perfect layout that adapts beautifully to all devices
-- **Smooth Animations**: Professional scroll animations, hover effects, and transitions
-- **Modern UI Components**: Clean, elegant design with attention to detail
-- **Preloader**: Branded loading screen for premium first impression
+### Visual Design
+- **Pixel-Art Animated Background**: Night-time Atlanta cityscape that transitions through:
+  - Night phase with twinkling stars and glowing building windows
+  - Sunrise phase with warm oranges and pinks
+  - Morning phase with bright blue skies
+- **Minimalist UI**: Clean, modern design with three simple sections
+- **Responsive Design**: Mobile-first layout that works beautifully on all devices
+- **Cinematic Atmosphere**: Dark overlay with semi-transparent content cards
 
-### Sections & Content
-- **Dynamic Hero Section**: Eye-catching hero with gradient backgrounds and call-to-action
-- **Stats Counter**: Animated counters showcasing company achievements
-- **Services Section**: 6 premium service offerings with icon designs
-- **Property Listings**: 6 luxury properties with detailed information and imagery
-- **Property Filtering**: Interactive filter system (All, Villas, Penthouses, Estates, New Listings)
-- **Property Modal**: Detailed property view with full specifications and features
-- **Testimonials**: Client reviews with 5-star ratings and avatars
-- **About Section**: Company story with feature highlights
-- **Newsletter Signup**: Email subscription for exclusive listings
-- **Contact Section**: Multi-field contact form with interest selection
+### Sections
+- **Home (Hero)**: Full-screen introduction with name, tagline, and CTA
+- **About**: Emily's background, experience, and specialties
+- **Contact**: Direct phone, office, Instagram, and email links
 
-### Interactions & Functionality
-- **Property Filtering**: Real-time filter with smooth animations
-- **Property Modals**: Detailed property views with scheduling options
-- **Animated Stats**: Counters that animate when scrolled into view
-- **Scroll Animations**: Elements fade in as user scrolls
-- **Smart Navigation**: Active section highlighting and smooth scrolling
-- **Mobile Menu**: Elegant hamburger menu for mobile devices
-- **Scroll-to-Top**: Floating button for easy navigation
-- **Form Validation**: Client-side validation for all forms
-- **Lazy Loading**: Performance-optimized content loading
+### Animation Details
+- **Canvas-based rendering**: Pure vanilla JavaScript, no libraries
+- **60-second cycle**: Smooth transitions between day phases
+- **Performance optimized**: Pre-generated buildings, time-based animation
+- **Pixel-art aesthetic**: Retro gaming-inspired visual style
+- **Responsive canvas**: Automatically adjusts to viewport size
 
 ### Technical
-- **Fast Performance**: Optimized for speed with nginx serving static content
+- **Fast Performance**: Optimized vanilla JS with nginx serving static content
 - **Cloud-Ready**: Containerized with Docker for easy deployment to Google Cloud Run
-- **SEO Optimized**: Proper meta tags, semantic HTML, and structured content
-- **Security**: Configured security headers and input validation
-- **Font Awesome Icons**: 500+ professional icons integrated
-- **Google Fonts**: Premium typography (Playfair Display + Poppins)
+- **SEO Optimized**: Proper meta tags and semantic HTML
+- **Accessibility**: ARIA labels and keyboard-friendly navigation
 
 ## Tech Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Animation**: HTML5 Canvas API
 - **Web Server**: nginx (Alpine)
 - **Containerization**: Docker
 - **Hosting**: Google Cloud Run
-- **Fonts**: Google Fonts (Playfair Display, Poppins)
 
 ## Project Structure
 
@@ -58,13 +47,11 @@ WEBSITE_LIVETIME/
 │   ├── index.html       # Main HTML file
 │   ├── css/
 │   │   └── style.css    # Stylesheet
-│   ├── js/
-│   │   └── script.js    # JavaScript functionality
-│   └── images/          # Images directory
+│   └── js/
+│       └── script.js    # JavaScript + Canvas animation
 ├── nginx.conf           # nginx configuration
 ├── Dockerfile           # Docker configuration
 ├── deploy-gcloud.sh     # Google Cloud Run deployment script
-├── fix-docker-permissions.sh  # Docker permissions helper
 └── README.md            # This file
 ```
 
@@ -74,18 +61,17 @@ WEBSITE_LIVETIME/
 
 - Docker installed
 - Docker daemon running
-- Proper Docker permissions (run `./fix-docker-permissions.sh` if needed)
 
 ### Running Locally with Docker
 
 1. Build the Docker image:
    ```bash
-   docker build -t emily-b-realty .
+   docker build -t emily-buckalew-site .
    ```
 
 2. Run the container:
    ```bash
-   docker run -p 8080:8080 emily-b-realty
+   docker run -p 8080:8080 emily-buckalew-site
    ```
 
 3. Open your browser and visit:
@@ -105,12 +91,8 @@ WEBSITE_LIVETIME/
 ### Quick Deploy
 
 1. Make sure you're in the project directory
-2. Fix Docker permissions (if needed):
-   ```bash
-   ./fix-docker-permissions.sh
-   ```
 
-3. Run the deployment script:
+2. Run the deployment script:
    ```bash
    ./deploy-gcloud.sh
    ```
@@ -127,73 +109,85 @@ If you prefer to deploy manually:
 
 ```bash
 # Set your project
-gcloud config set project telepay-459221
+gcloud config set project YOUR-PROJECT-ID
 
 # Configure Docker
 gcloud auth configure-docker gcr.io
 
 # Build and push
-docker build -t gcr.io/telepay-459221/emily-b-realty .
-docker push gcr.io/telepay-459221/emily-b-realty
+docker build -t gcr.io/YOUR-PROJECT-ID/emily-buckalew-site .
+docker push gcr.io/YOUR-PROJECT-ID/emily-buckalew-site
 
 # Deploy to Cloud Run
-gcloud run deploy emily-b-realty \
-  --image gcr.io/telepay-459221/emily-b-realty \
+gcloud run deploy emily-buckalew-site \
+  --image gcr.io/YOUR-PROJECT-ID/emily-buckalew-site \
   --platform managed \
   --region us-east1 \
   --allow-unauthenticated \
   --port 8080
 ```
 
-## Configuration
+## Customization
 
-### Customizing the Website
+### Content
 
-- **Content**: Edit `public/index.html` to change text, properties, and structure
-- **Styling**: Modify `public/css/style.css` to change colors, fonts, and layout
-- **Interactivity**: Update `public/js/script.js` to add or modify JavaScript functionality
+Edit `public/index.html` to change:
+- Personal information and bio
+- Contact details
+- Social media links
 
-### Deployment Settings
+### Styling
 
-Edit the variables at the top of `deploy-gcloud.sh`:
+Modify `public/css/style.css` to adjust:
+- Color scheme (--accent-gold, --text-light, etc.)
+- Font sizes and spacing
+- Content card opacity and blur
 
-```bash
-PROJECT_ID="your-project-id"
-SERVICE_NAME="your-service-name"
-REGION="your-preferred-region"
-CPU="1"
-MEMORY="2Gi"
-```
+### Animation
 
-## Docker Permissions
+Update `public/js/script.js` to customize:
+- Cycle duration (default: 60 seconds)
+- Building count and sizes
+- Star count and distribution
+- Color gradients for each phase
+- Sun position and size
 
-If you encounter Docker permission errors, see [DOCKER_PERMISSIONS_FIX.md](DOCKER_PERMISSIONS_FIX.md) for detailed instructions.
+## Animation Details
+
+The pixel-art city animation works by:
+
+1. **Pre-generating buildings** on page load with random heights/widths
+2. **Creating window patterns** as small pixel blocks on each building
+3. **Cycling through three phases**:
+   - Night (0-33%): Dark sky, bright stars, glowing windows
+   - Sunrise (33-66%): Orange/pink gradients, fading stars, rising sun
+   - Morning (66-100%): Blue sky, dim windows, high sun
+4. **Interpolating colors** smoothly between phases
+5. **Animating window glow** with sine wave variations
 
 ## Performance
 
 The website is optimized for performance:
+- Canvas animation uses `requestAnimationFrame`
+- Buildings pre-generated (not randomized per frame)
+- Only gradients and lighting recalculated each frame
 - Nginx serves static files efficiently
 - Gzip compression enabled
-- Static assets cached for 1 year
-- Minimal external dependencies
-- Lazy loading animations
+- No external dependencies or libraries
 
-## Security
+## Contact Information
 
-Security headers are configured in nginx:
-- X-Frame-Options
-- X-Content-Type-Options
-- X-XSS-Protection
-- Access to hidden files denied
+This landing page is for:
 
-## License
+**Emily Buckalew**
+Realtor®
+Method Real Estate Advisors
 
-All rights reserved - Emily B Realty
-
-## Support
-
-For questions or issues, please contact the development team.
+Office: 1792 Woodstock Rd, Building 100, Roswell, GA 30075
+Phone: 404-585-7355
+Direct: 667-231-6147
+Instagram: [@emily.atlanta.realty](https://www.instagram.com/emily.atlanta.realty/)
 
 ---
 
-**Built with ❤️ for luxury real estate**
+**Built with vanilla JavaScript and HTML5 Canvas**
