@@ -3,27 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emily B Realty - Your trusted partner in finding the perfect home">
-    <title>Emily B Realty - Luxury Real Estate</title>
+    <meta name="description" content="Emily B Realty - Luxury real estate with premium properties in prime locations">
+    <meta name="keywords" content="luxury real estate, luxury homes, premium properties, Beverly Hills, Malibu">
+    <title>Emily B Realty - Premium Luxury Real Estate</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="loader"></div>
+            <p>Loading Excellence...</p>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
+                    <i class="fas fa-home-lg-alt"></i>
                     <h1>Emily B Realty</h1>
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#properties" class="nav-link">Properties</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+                <div class="nav-actions">
+                    <button class="btn-call"><i class="fas fa-phone"></i> (310) 555-0123</button>
+                </div>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -35,12 +51,113 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2 class="hero-subtitle">Welcome to</h2>
-            <h1 class="hero-title">Emily B Realty</h1>
-            <p class="hero-text">Find your dream home with luxury and elegance</p>
-            <a href="#properties" class="btn btn-primary">Explore Properties</a>
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="hero-content">
+                    <span class="hero-badge">Premium Real Estate</span>
+                    <h1 class="hero-title">Discover Your Dream <br><span class="text-highlight">Luxury Home</span></h1>
+                    <p class="hero-text">Experience unparalleled elegance in the most exclusive locations</p>
+                    <div class="hero-buttons">
+                        <a href="#properties" class="btn btn-primary"><i class="fas fa-search"></i> Explore Properties</a>
+                        <a href="#contact" class="btn btn-outline">Schedule Viewing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Quick Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <h3 class="counter" data-target="500">0</h3>
+                        <p>Properties Sold</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3 class="counter" data-target="1200">0</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-award"></i>
+                    <div>
+                        <h3 class="counter" data-target="25">0</h3>
+                        <p>Awards Won</p>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <h3><span class="counter" data-target="98">0</span>%</h3>
+                        <p>Satisfaction Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Our Premium Services</h2>
+                <p class="section-subtitle">Comprehensive real estate solutions tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Property Search</h3>
+                    <p>Access exclusive listings and find your perfect luxury property with our expert guidance</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Buying Assistance</h3>
+                    <p>Navigate the buying process seamlessly with our experienced team by your side</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Property Valuation</h3>
+                    <p>Get accurate market valuations for your property from certified experts</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Investment Advisory</h3>
+                    <p>Make informed investment decisions with our comprehensive market analysis</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Property Management</h3>
+                    <p>Full-service property management for landlords and investors</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Selling Services</h3>
+                    <p>Maximize your property's value with our proven marketing strategies</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -48,141 +165,280 @@
     <section id="properties" class="properties">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Exclusive Listings</span>
                 <h2 class="section-title">Featured Properties</h2>
-                <p class="section-subtitle">Discover our handpicked selection of luxury homes</p>
+                <p class="section-subtitle">Handpicked selection of the finest luxury homes</p>
             </div>
+
+            <!-- Property Filters -->
+            <div class="property-filters">
+                <button class="filter-btn active" data-filter="all">All Properties</button>
+                <button class="filter-btn" data-filter="villa">Villas</button>
+                <button class="filter-btn" data-filter="penthouse">Penthouses</button>
+                <button class="filter-btn" data-filter="estate">Estates</button>
+                <button class="filter-btn" data-filter="new">New Listings</button>
+            </div>
+
             <div class="properties-grid">
                 <!-- Property 1 -->
-                <div class="property-card">
+                <div class="property-card" data-category="villa">
                     <div class="property-image">
-                        <div class="property-badge">Featured</div>
+                        <div class="property-badge featured">Featured</div>
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <span class="placeholder-text">Luxury Villa</span>
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(1)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
+                            <span class="placeholder-text">Modern Luxury Villa</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Modern Luxury Villa</h3>
-                        <p class="property-location">Beverly Hills, CA</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Modern Luxury Villa</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+                        </div>
+                        <p class="property-description">Stunning modern villa with panoramic city views and premium finishes throughout</p>
                         <div class="property-features">
-                            <span><strong>5</strong> Beds</span>
-                            <span><strong>4</strong> Baths</span>
-                            <span><strong>4,500</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 5 Beds</span>
+                            <span><i class="fas fa-bath"></i> 4 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 4,500 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$3,500,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$3,500,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(1)">View Details</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property 2 -->
-                <div class="property-card">
+                <div class="property-card" data-category="estate new">
                     <div class="property-image">
-                        <div class="property-badge new">New</div>
+                        <div class="property-badge new">New Listing</div>
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(2)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
                             <span class="placeholder-text">Beachfront Estate</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Oceanfront Paradise</h3>
-                        <p class="property-location">Malibu, CA</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Oceanfront Paradise</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Malibu, CA</p>
+                        </div>
+                        <p class="property-description">Breathtaking beachfront estate with private beach access and infinity pool</p>
                         <div class="property-features">
-                            <span><strong>6</strong> Beds</span>
-                            <span><strong>5</strong> Baths</span>
-                            <span><strong>5,200</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 6 Beds</span>
+                            <span><i class="fas fa-bath"></i> 5 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 5,200 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$5,750,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$5,750,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(2)">View Details</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property 3 -->
-                <div class="property-card">
+                <div class="property-card" data-category="villa">
                     <div class="property-image">
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(3)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
                             <span class="placeholder-text">Contemporary Home</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Contemporary Masterpiece</h3>
-                        <p class="property-location">Los Angeles, CA</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Contemporary Masterpiece</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</p>
+                        </div>
+                        <p class="property-description">Architectural gem featuring cutting-edge design and smart home technology</p>
                         <div class="property-features">
-                            <span><strong>4</strong> Beds</span>
-                            <span><strong>3</strong> Baths</span>
-                            <span><strong>3,800</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 4 Beds</span>
+                            <span><i class="fas fa-bath"></i> 3 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 3,800 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$2,850,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$2,850,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(3)">View Details</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property 4 -->
-                <div class="property-card">
+                <div class="property-card" data-category="estate">
                     <div class="property-image">
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(4)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
                             <span class="placeholder-text">Mountain Retreat</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Mountain View Estate</h3>
-                        <p class="property-location">Aspen, CO</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Mountain View Estate</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Aspen, CO</p>
+                        </div>
+                        <p class="property-description">Luxurious mountain retreat with ski-in/ski-out access and stunning views</p>
                         <div class="property-features">
-                            <span><strong>7</strong> Beds</span>
-                            <span><strong>6</strong> Baths</span>
-                            <span><strong>6,500</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 7 Beds</span>
+                            <span><i class="fas fa-bath"></i> 6 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 6,500 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$4,200,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$4,200,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(4)">View Details</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property 5 -->
-                <div class="property-card">
+                <div class="property-card" data-category="penthouse new">
                     <div class="property-image">
-                        <div class="property-badge">Hot Deal</div>
+                        <div class="property-badge hot">Hot Deal</div>
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(5)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
                             <span class="placeholder-text">Penthouse Suite</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Downtown Penthouse</h3>
-                        <p class="property-location">San Francisco, CA</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Downtown Penthouse</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+                        </div>
+                        <p class="property-description">Exclusive penthouse with 360-degree city views and rooftop terrace</p>
                         <div class="property-features">
-                            <span><strong>3</strong> Beds</span>
-                            <span><strong>3</strong> Baths</span>
-                            <span><strong>3,200</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 3 Beds</span>
+                            <span><i class="fas fa-bath"></i> 3 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 3,200 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$2,950,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$2,950,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(5)">View Details</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property 6 -->
-                <div class="property-card">
+                <div class="property-card" data-category="villa">
                     <div class="property-image">
                         <div class="property-img-placeholder" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <div class="property-overlay">
+                                <button class="btn-icon" onclick="openPropertyModal(6)"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
+                            </div>
                             <span class="placeholder-text">Golf Course Villa</span>
                         </div>
                     </div>
                     <div class="property-details">
-                        <h3 class="property-title">Golf Course Villa</h3>
-                        <p class="property-location">Scottsdale, AZ</p>
+                        <div class="property-header">
+                            <h3 class="property-title">Golf Course Villa</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Scottsdale, AZ</p>
+                        </div>
+                        <p class="property-description">Premium villa on championship golf course with resort-style amenities</p>
                         <div class="property-features">
-                            <span><strong>5</strong> Beds</span>
-                            <span><strong>4</strong> Baths</span>
-                            <span><strong>4,100</strong> sq ft</span>
+                            <span><i class="fas fa-bed"></i> 5 Beds</span>
+                            <span><i class="fas fa-bath"></i> 4 Baths</span>
+                            <span><i class="fas fa-ruler-combined"></i> 4,100 sq ft</span>
                         </div>
                         <div class="property-footer">
-                            <p class="property-price">$3,150,000</p>
-                            <a href="#contact" class="btn btn-secondary">View Details</a>
+                            <div class="property-price">
+                                <span class="price-label">Price</span>
+                                <span class="price-value">$3,150,000</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(6)">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-50">
+                <a href="#contact" class="btn btn-primary">View All Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Client Stories</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Real experiences from satisfied homeowners</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Emily B Realty helped us find our dream home in Beverly Hills. Their professionalism and attention to detail made the entire process seamless. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div>
+                            <h4>John & Sarah Davis</h4>
+                            <p>Beverly Hills Homeowners</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Outstanding service! The team went above and beyond to find us the perfect property. Their market knowledge and negotiation skills saved us hundreds of thousands."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <p>Investment Property Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Working with Emily B Realty was a game-changer. They understood exactly what we wanted and delivered beyond our expectations. True professionals!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AR</div>
+                        <div>
+                            <h4>Amanda Rodriguez</h4>
+                            <p>Malibu Resident</p>
                         </div>
                     </div>
                 </div>
@@ -195,37 +451,58 @@
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-content">
+                    <span class="section-tag">Our Story</span>
                     <h2 class="section-title">About Emily B Realty</h2>
                     <p class="about-text">
-                        With over 15 years of experience in luxury real estate, Emily B Realty has been helping
-                        clients find their dream homes across the United States. Our commitment to excellence,
-                        personalized service, and deep market knowledge sets us apart.
+                        For over 15 years, Emily B Realty has been the premier destination for luxury real estate across the United States. Our unwavering commitment to excellence, personalized white-glove service, and deep market expertise has positioned us as leaders in the high-end property sector.
                     </p>
                     <p class="about-text">
-                        We specialize in high-end residential properties, offering a curated selection of the
-                        finest homes in the most desirable locations. Our team of experienced professionals is
-                        dedicated to making your real estate journey seamless and rewarding.
+                        We specialize exclusively in luxury residential properties, curating a selection of the world's finest homes in the most prestigious locations. Our award-winning team of real estate professionals is dedicated to making your property journey not just successful, but truly exceptional.
                     </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h3>500+</h3>
-                            <p>Properties Sold</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified Luxury Home Marketing Specialists</span>
                         </div>
-                        <div class="stat-item">
-                            <h3>98%</h3>
-                            <p>Client Satisfaction</p>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Exclusive Access to Off-Market Properties</span>
                         </div>
-                        <div class="stat-item">
-                            <h3>15+</h3>
-                            <p>Years Experience</p>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Personalized Concierge Service</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Global Network of Elite Agents</span>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
                     <div class="about-img-placeholder">
-                        <span>Emily B Realty</span>
+                        <div class="about-img-overlay">
+                            <i class="fas fa-award"></i>
+                            <h3>15+ Years</h3>
+                            <p>Of Excellence</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated with Exclusive Listings</h2>
+                    <p>Subscribe to receive the latest luxury properties directly in your inbox</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -234,45 +511,72 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Let's Connect</span>
                 <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Ready to find your dream home? Contact us today!</p>
+                <p class="section-subtitle">Ready to find your dream home? Our team is here to help</p>
             </div>
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <div class="info-item">
-                        <h3>Office Address</h3>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Our Office</h3>
                         <p>123 Luxury Lane<br>Beverly Hills, CA 90210</p>
                     </div>
-                    <div class="info-item">
-                        <h3>Phone</h3>
-                        <p>(310) 555-0123</p>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>(310) 555-0123<br>Available 24/7</p>
                     </div>
-                    <div class="info-item">
-                        <h3>Email</h3>
-                        <p>info@emilybrealty.com</p>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>info@emilybrealty.com<br>support@emilybrealty.com</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
                         <h3>Office Hours</h3>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                        Saturday: 10:00 AM - 4:00 PM<br>
-                        Sunday: By Appointment</p>
+                        <p>Mon-Fri: 9:00 AM - 6:00 PM<br>Sat-Sun: By Appointment</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <div class="contact-form-wrapper">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <select id="interest" name="interest">
+                                    <option value="">I'm interested in...</option>
+                                    <option value="buying">Buying a Property</option>
+                                    <option value="selling">Selling a Property</option>
+                                    <option value="investing">Investment Opportunities</option>
+                                    <option value="valuation">Property Valuation</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements..." required></textarea>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -284,30 +588,71 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Emily B Realty</h3>
-                    <p>Your trusted partner in finding the perfect luxury home.</p>
+                    <div class="footer-logo">
+                        <i class="fas fa-home-lg-alt"></i>
+                        <h3>Emily B Realty</h3>
+                    </div>
+                    <p>Your trusted partner in luxury real estate. Delivering exceptional properties and unparalleled service since 2009.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#properties">Properties</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Properties</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>123 Luxury Lane<br>Beverly Hills, CA 90210</p>
-                    <p>Phone: (310) 555-0123</p>
-                    <p>Email: info@emilybrealty.com</p>
+                    <h4>Property Types</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Luxury Villas</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Penthouses</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beachfront Properties</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Mountain Estates</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Investment Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Lane, Beverly Hills, CA 90210</li>
+                        <li><i class="fas fa-phone"></i> (310) 555-0123</li>
+                        <li><i class="fas fa-envelope"></i> info@emilybrealty.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Emily B Realty. All rights reserved.</p>
+                <p>&copy; 2024 Emily B Realty. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Property Modal -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePropertyModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalBody">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
