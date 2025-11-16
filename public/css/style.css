@@ -197,6 +197,27 @@ a {
     gap: 15px;
 }
 
+.btn-instagram {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-instagram:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(188, 24, 136, 0.4);
+}
+
 .btn-call {
     background: var(--secondary-color);
     color: var(--white);
