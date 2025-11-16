@@ -514,6 +514,35 @@ a {
     opacity: 0.9;
 }
 
+/* ========== SEARCH INTEGRATION SECTION ========== */
+.search-integration {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d2d44 100%);
+    padding: 100px 0;
+    position: relative;
+}
+
+.search-integration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="rgba(201,169,97,0.1)"/></svg>') repeat;
+    opacity: 0.3;
+}
+
+.search-integration-content {
+    position: relative;
+    z-index: 1;
+}
+
+.search-integration-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 /* ========== SECTION STYLES ========== */
 section {
     padding: 120px 0;

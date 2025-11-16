@@ -65,7 +65,7 @@
                     <h1 class="hero-title">Find Your Perfect <br><span class="text-highlight">Atlanta Home</span></h1>
                     <p class="hero-text">Your trusted guide to Metro Atlanta's finest neighborhoods and properties</p>
                     <div class="hero-buttons">
-                        <a href="#properties" class="btn btn-primary"><i class="fas fa-search"></i> Explore Properties</a>
+                        <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary"><i class="fas fa-search"></i> Search All Listings</a>
                         <a href="#contact" class="btn btn-outline">Schedule Viewing</a>
                     </div>
                 </div>
@@ -108,6 +108,42 @@
                         <h3><span class="counter" data-target="98">0</span>%</h3>
                         <p>Satisfaction Rate</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Search Integration -->
+    <section class="search-integration">
+        <div class="container">
+            <div class="search-integration-content">
+                <div class="search-integration-text">
+                    <span class="section-tag" style="color: var(--secondary-color);">Live MLS Access</span>
+                    <h2 class="section-title" style="color: var(--white); margin-bottom: 20px;">Search Thousands of Atlanta Properties</h2>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                        Access Method Atlanta's complete MLS database with real-time listings across Metro Atlanta. Search by neighborhood, price range, property type, and more.
+                    </p>
+                    <div class="search-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px;">
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
+                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+                            <span>Real-time MLS updates</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
+                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+                            <span>Advanced search filters</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
+                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+                            <span>All Metro Atlanta areas</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
+                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+                            <span>Detailed property info</span>
+                        </div>
+                    </div>
+                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
+                        <i class="fas fa-search"></i> Start Your Property Search
+                    </a>
                 </div>
             </div>
         </div>
@@ -172,14 +208,19 @@
     <section id="properties" class="properties">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Exclusive Listings</span>
-                <h2 class="section-title">Featured Properties</h2>
-                <p class="section-subtitle">Handpicked selection of the finest luxury homes</p>
+                <span class="section-tag">Featured Examples</span>
+                <h2 class="section-title">Atlanta Luxury Properties</h2>
+                <p class="section-subtitle">Sample properties from Metro Atlanta's finest neighborhoods. Search our complete database powered by Method Atlanta for all available listings</p>
+                <div style="margin-top: 30px;">
+                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Search Method Atlanta's Full Database
+                    </a>
+                </div>
             </div>
 
             <!-- Property Filters -->
             <div class="property-filters">
-                <button class="filter-btn active" data-filter="all">All Properties</button>
+                <button class="filter-btn active" data-filter="all">All Examples</button>
                 <button class="filter-btn" data-filter="villa">Villas</button>
                 <button class="filter-btn" data-filter="penthouse">Penthouses</button>
                 <button class="filter-btn" data-filter="estate">Estates</button>
@@ -212,10 +253,10 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$2,495,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(1)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(1)">View Example</button>
                         </div>
                     </div>
                 </div>
@@ -245,10 +286,10 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$1,895,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(2)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(2)">View Example</button>
                         </div>
                     </div>
                 </div>
@@ -277,10 +318,10 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$1,350,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(3)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(3)">View Example</button>
                         </div>
                     </div>
                 </div>
@@ -309,10 +350,10 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$1,750,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(4)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(4)">View Example</button>
                         </div>
                     </div>
                 </div>
@@ -342,10 +383,10 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$975,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(5)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(5)">View Example</button>
                         </div>
                     </div>
                 </div>
@@ -374,17 +415,22 @@
                         </div>
                         <div class="property-footer">
                             <div class="property-price">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Example</span>
                                 <span class="price-value">$825,000</span>
                             </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(6)">View Details</button>
+                            <button class="btn btn-secondary" onclick="openPropertyModal(6)">View Example</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-50">
-                <a href="#contact" class="btn btn-primary">View All Properties</a>
+                <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-database"></i> View All Available Properties
+                </a>
+                <p style="margin-top: 20px; color: var(--text-light);">
+                    Access Method Atlanta's complete MLS database with thousands of listings across Metro Atlanta
+                </p>
             </div>
         </div>
     </section>

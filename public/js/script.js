@@ -380,14 +380,24 @@ function openPropertyModal(propertyId) {
                 </div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 2px solid #eee;">
-                <div>
-                    <p style="color: var(--text-light); margin-bottom: 5px;">Price</p>
-                    <h3 style="font-size: 2.5rem; color: var(--secondary-color);">${property.price}</h3>
+            <div style="padding-top: 30px; border-top: 2px solid #eee;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <div>
+                        <p style="color: var(--text-light); margin-bottom: 5px;">Example Price Range</p>
+                        <h3 style="font-size: 2.5rem; color: var(--secondary-color);">${property.price}</h3>
+                    </div>
+                    <button onclick="scrollToContact()" class="btn btn-secondary" style="padding: 15px 40px;">
+                        <i class="fas fa-calendar-check"></i> Contact Emily
+                    </button>
                 </div>
-                <button onclick="scrollToContact()" class="btn btn-primary" style="padding: 15px 40px;">
-                    <i class="fas fa-calendar-check"></i> Schedule Viewing
-                </button>
+                <div style="background: var(--bg-light); padding: 25px; border-radius: 10px; text-align: center;">
+                    <p style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.05rem;">
+                        <strong>This is a sample property.</strong> Search Method Atlanta's complete MLS database for current listings:
+                    </p>
+                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary" style="padding: 15px 40px;">
+                        <i class="fas fa-search"></i> Search All Available Properties
+                    </a>
+                </div>
             </div>
         </div>
     `;
