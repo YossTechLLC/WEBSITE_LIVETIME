@@ -210,62 +210,72 @@ class PixelCity {
 }
 
 // ========================================
-// SMOOTH SCROLLING
-// ========================================
-
-function smoothScroll(target) {
-    const element = document.querySelector(target);
-    if (element) {
-        const offsetTop = element.offsetTop;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Nav link smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = this.getAttribute('href');
-        smoothScroll(target);
-
-        // Close mobile menu if open
-        const navLinks = document.querySelector('.nav-links');
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            mobileToggle.classList.remove('active');
-        }
-    });
-});
-
-// CTA button scroll
-document.querySelectorAll('[data-scroll-to]').forEach(button => {
-    button.addEventListener('click', function() {
-        const target = '#' + this.getAttribute('data-scroll-to');
-        smoothScroll(target);
-    });
-});
-
-// ========================================
-// MOBILE NAVIGATION TOGGLE
-// ========================================
-
-const mobileToggle = document.querySelector('.mobile-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-mobileToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileToggle.classList.toggle('active');
-});
-
-// ========================================
-// INITIALIZE ANIMATION
+// INITIALIZE ALL DOM-DEPENDENT CODE
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ========================================
+    // SMOOTH SCROLLING
+    // ========================================
+
+    function smoothScroll(target) {
+        const element = document.querySelector(target);
+        if (element) {
+            const offsetTop = element.offsetTop;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Nav link smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.getAttribute('href');
+            smoothScroll(target);
+
+            // Close mobile menu if open
+            const navLinks = document.querySelector('.nav-links');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            if (navLinks && mobileToggle && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            }
+        });
+    });
+
+    // CTA button scroll
+    document.querySelectorAll('[data-scroll-to]').forEach(button => {
+        button.addEventListener('click', function() {
+            const target = '#' + this.getAttribute('data-scroll-to');
+            smoothScroll(target);
+        });
+    });
+
+    // ========================================
+    // MOBILE NAVIGATION TOGGLE
+    // ========================================
+
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+    }
+
+    // ========================================
+    // INITIALIZE ANIMATION
+    // ========================================
+
     const canvas = document.getElementById('cityCanvas');
-    new PixelCity(canvas);
+    if (canvas) {
+        new PixelCity(canvas);
+    } else {
+        console.error('Canvas element #cityCanvas not found!');
+    }
 });
