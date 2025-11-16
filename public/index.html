@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBSITE_LIVETIME</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 WEBSITE_LIVETIME</h1>
+            <p class="subtitle">Live and Ready</p>
+        </header>
+
+        <main>
+            <section class="info-card">
+                <h2>Welcome</h2>
+                <p>This website is live and operational with webhook capabilities.</p>
+            </section>
+
+            <section class="info-card">
+                <h2>Status</h2>
+                <div id="status">
+                    <p>Checking system status...</p>
+                </div>
+            </section>
+
+            <section class="info-card">
+                <h2>Endpoints</h2>
+                <ul>
+                    <li><code>GET /</code> - Main website</li>
+                    <li><code>GET /health</code> - Health check</li>
+                    <li><code>POST /webhook</code> - Webhook receiver</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 WEBSITE_LIVETIME</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

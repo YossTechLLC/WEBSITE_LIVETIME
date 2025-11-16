@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-livetime
+  labels:
+    app: website-livetime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-livetime
+  template:
+    metadata:
+      labels:
+        app: website-livetime
+    spec:
+      containers:
+      - name: website-livetime
+        image: website-livetime:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-livetime-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: website-livetime
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
