@@ -3,710 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emily Atlanta Realty, powered by Method Atlanta - Where expertise meets excellence. Your trusted Atlanta real estate expert for Buckhead, Midtown, Virginia-Highland, and Metro Atlanta luxury homes">
-    <meta name="keywords" content="Atlanta real estate, Method Atlanta, Atlanta homes, Buckhead real estate, Midtown Atlanta, Virginia-Highland homes, Atlanta luxury properties, Metro Atlanta realtor">
-    <title>Emily Atlanta Realty - Your Atlanta Real Estate Expert</title>
+    <meta name="description" content="Emily Buckalew - Full-service Atlanta Realtor with Method Real Estate Advisors. Helping buyers, sellers, and investors navigate Atlanta's most vibrant neighborhoods.">
+    <meta name="keywords" content="Atlanta realtor, Emily Buckalew, Method Real Estate Advisors, Buckhead, Midtown, Alpharetta real estate">
+    <title>Emily Buckalew - Atlanta Realtor</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-content">
-            <div class="loader"></div>
-            <p>Loading Excellence...</p>
-        </div>
-    </div>
+    <!-- Animated pixel-art background -->
+    <canvas id="cityCanvas"></canvas>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <i class="fas fa-home-lg-alt"></i>
-                    <div class="logo-text">
-                        <h1>Emily Atlanta Realty</h1>
-                        <span class="logo-subtitle">Powered by Method Atlanta</span>
-                    </div>
-                </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#properties" class="nav-link">Properties</a></li>
-                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="logo">emily buckalew</div>
+                <button class="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#contact">contact</a></li>
                 </ul>
-                <div class="nav-actions">
-                    <a href="https://www.instagram.com/emily.atlanta.realty/" target="_blank" class="btn-instagram" title="Follow us on Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <button class="btn-call"><i class="fas fa-phone"></i> (404) 555-0123</button>
-                </div>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-slider">
-            <div class="hero-slide active" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                <div class="hero-content">
-                    <span class="hero-badge">Powered by Method Atlanta</span>
-                    <p class="hero-tagline">Where Expertise Meets Excellence</p>
-                    <h1 class="hero-title">Find Your Perfect <br><span class="text-highlight">Atlanta Home</span></h1>
-                    <p class="hero-text">Your trusted guide to Metro Atlanta's finest neighborhoods and properties</p>
-                    <div class="hero-buttons">
-                        <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary"><i class="fas fa-search"></i> Search All Listings</a>
-                        <a href="#contact" class="btn btn-outline">Schedule Viewing</a>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Emily Buckalew</h1>
+                <p class="tagline">Full-service, white-glove Atlanta Realtor®</p>
+                <p class="subtitle">Helping buyers, sellers, and investors navigate Atlanta's most vibrant neighborhoods with Method Real Estate Advisors.</p>
+                <button class="cta-button" data-scroll-to="contact">Schedule a Call</button>
             </div>
-        </div>
-        <div class="hero-scroll">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+        </section>
 
-    <!-- Quick Stats Bar -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <i class="fas fa-home"></i>
-                    <div>
-                        <h3 class="counter" data-target="500">0</h3>
-                        <p>Properties Sold</p>
-                    </div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-users"></i>
-                    <div>
-                        <h3 class="counter" data-target="1200">0</h3>
-                        <p>Happy Clients</p>
-                    </div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-award"></i>
-                    <div>
-                        <h3 class="counter" data-target="25">0</h3>
-                        <p>Awards Won</p>
-                    </div>
-                </div>
-                <div class="stat-box">
-                    <i class="fas fa-star"></i>
-                    <div>
-                        <h3><span class="counter" data-target="98">0</span>%</h3>
-                        <p>Satisfaction Rate</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Property Search Integration -->
-    <section class="search-integration">
-        <div class="container">
-            <div class="search-integration-content">
-                <div class="search-integration-text">
-                    <span class="section-tag" style="color: var(--secondary-color);">Live MLS Access</span>
-                    <h2 class="section-title" style="color: var(--white); margin-bottom: 20px;">Search Thousands of Atlanta Properties</h2>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-                        Access Method Atlanta's complete MLS database with real-time listings across Metro Atlanta. Search by neighborhood, price range, property type, and more.
-                    </p>
-                    <div class="search-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px;">
-                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>Real-time MLS updates</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>Advanced search filters</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>All Metro Atlanta areas</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: var(--white);">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>Detailed property info</span>
-                        </div>
-                    </div>
-                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
-                        <i class="fas fa-search"></i> Start Your Property Search
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">What We Do</span>
-                <h2 class="section-title">Our Premium Services</h2>
-                <p class="section-subtitle">Comprehensive real estate solutions delivered with Method Atlanta's commitment to excellence</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search-location"></i>
-                    </div>
-                    <h3>Property Search</h3>
-                    <p>Access exclusive listings and discover your perfect property with expert guidance and Method Atlanta's proven approach</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Buying Assistance</h3>
-                    <p>Navigate the buying process seamlessly with professional expertise and personalized attention every step of the way</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h3>Property Valuation</h3>
-                    <p>Get accurate market valuations for your property from certified experts</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Investment Advisory</h3>
-                    <p>Make informed investment decisions with comprehensive market analysis backed by Method Atlanta's expertise</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <h3>Property Management</h3>
-                    <p>Full-service property management for landlords and investors</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Selling Services</h3>
-                    <p>Maximize your property's value with proven marketing strategies and professional presentation</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Properties Section -->
-    <section id="properties" class="properties">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Featured Examples</span>
-                <h2 class="section-title">Atlanta Luxury Properties</h2>
-                <p class="section-subtitle">Sample properties from Metro Atlanta's finest neighborhoods. Search our complete database powered by Method Atlanta for all available listings</p>
-                <div style="margin-top: 30px;">
-                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Search Method Atlanta's Full Database
-                    </a>
-                </div>
-            </div>
-
-            <!-- Property Filters -->
-            <div class="property-filters">
-                <button class="filter-btn active" data-filter="all">All Examples</button>
-                <button class="filter-btn" data-filter="villa">Villas</button>
-                <button class="filter-btn" data-filter="penthouse">Penthouses</button>
-                <button class="filter-btn" data-filter="estate">Estates</button>
-                <button class="filter-btn" data-filter="new">New Listings</button>
-            </div>
-
-            <div class="properties-grid">
-                <!-- Property 1 -->
-                <div class="property-card" data-category="villa">
-                    <div class="property-image">
-                        <div class="property-badge featured">Featured</div>
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(1)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Buckhead Estate</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Luxury Buckhead Estate</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Buckhead, Atlanta</p>
-                        </div>
-                        <p class="property-description">Stunning gated estate in prestigious Buckhead with panoramic city views and premium finishes</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 5 Beds</span>
-                            <span><i class="fas fa-bath"></i> 4.5 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 5,200 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$2,495,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(1)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 2 -->
-                <div class="property-card" data-category="estate new">
-                    <div class="property-image">
-                        <div class="property-badge new">New Listing</div>
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(2)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Midtown Penthouse</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Modern Midtown Penthouse</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Midtown, Atlanta</p>
-                        </div>
-                        <p class="property-description">Breathtaking penthouse with skyline views, rooftop terrace, and walking distance to Piedmont Park</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 3 Beds</span>
-                            <span><i class="fas fa-bath"></i> 3.5 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 3,100 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$1,895,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(2)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card" data-category="villa">
-                    <div class="property-image">
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(3)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Virginia-Highland Gem</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Virginia-Highland Charmer</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Virginia-Highland, Atlanta</p>
-                        </div>
-                        <p class="property-description">Beautifully renovated bungalow with modern amenities and classic charm in walkable neighborhood</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 4 Beds</span>
-                            <span><i class="fas fa-bath"></i> 3 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 2,800 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$1,350,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(3)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card" data-category="estate">
-                    <div class="property-image">
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(4)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Brookhaven Estate</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Elegant Brookhaven Home</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Brookhaven, Atlanta</p>
-                        </div>
-                        <p class="property-description">Stunning traditional estate with pool, gourmet kitchen, and resort-style backyard</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 5 Beds</span>
-                            <span><i class="fas fa-bath"></i> 4.5 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 4,800 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$1,750,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(4)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card" data-category="penthouse new">
-                    <div class="property-image">
-                        <div class="property-badge hot">Hot Deal</div>
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(5)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Inman Park Townhome</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Historic Inman Park Townhome</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Inman Park, Atlanta</p>
-                        </div>
-                        <p class="property-description">Meticulously restored Victorian townhome with modern updates and rooftop deck</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 3 Beds</span>
-                            <span><i class="fas fa-bath"></i> 2.5 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 2,400 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$975,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(5)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="property-card" data-category="villa">
-                    <div class="property-image">
-                        <div class="property-img-placeholder" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-                            <div class="property-overlay">
-                                <button class="btn-icon" onclick="openPropertyModal(6)"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-heart"></i></button>
-                            </div>
-                            <span class="placeholder-text">Decatur Family Home</span>
-                        </div>
-                    </div>
-                    <div class="property-details">
-                        <div class="property-header">
-                            <h3 class="property-title">Charming Decatur Home</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Decatur, Atlanta</p>
-                        </div>
-                        <p class="property-description">Spacious family home near top-rated schools, shops, and restaurants in vibrant Decatur</p>
-                        <div class="property-features">
-                            <span><i class="fas fa-bed"></i> 4 Beds</span>
-                            <span><i class="fas fa-bath"></i> 3 Baths</span>
-                            <span><i class="fas fa-ruler-combined"></i> 3,200 sq ft</span>
-                        </div>
-                        <div class="property-footer">
-                            <div class="property-price">
-                                <span class="price-label">Example</span>
-                                <span class="price-value">$825,000</span>
-                            </div>
-                            <button class="btn btn-secondary" onclick="openPropertyModal(6)">View Example</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-50">
-                <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-database"></i> View All Available Properties
-                </a>
-                <p style="margin-top: 20px; color: var(--text-light);">
-                    Access Method Atlanta's complete MLS database with thousands of listings across Metro Atlanta
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="content-card">
+                <h2>About Emily</h2>
+                <p>
+                    A Maryland native who has spent the last several years living and investing in Atlanta, Emily brings an insider's perspective to the city's real estate market. From Midtown to Alpharetta to her current home in Buckhead, she understands both homes and lifestyle — the best restaurants, local spots, and what makes each neighborhood unique.
                 </p>
+                <p>
+                    Emily combines strong negotiation skills with clear, proactive communication, always focusing on understanding each client's unique needs and goals. Whether you're a first-time buyer, seasoned investor, or looking for your forever home, her approach makes the process smooth, confident, and well-guided from search to closing.
+                </p>
+                <ul class="highlights">
+                    <li>Midtown · Alpharetta · Buckhead experience</li>
+                    <li>Investors, first-time buyers, and forever homes</li>
+                    <li>Method Real Estate Advisors</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Client Stories</span>
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle">Real experiences from satisfied homeowners</p>
-            </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Emily B Realty helped us find our dream home in Beverly Hills. Their professionalism and attention to detail made the entire process seamless. Highly recommended!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JD</div>
-                        <div>
-                            <h4>John & Sarah Davis</h4>
-                            <p>Beverly Hills Homeowners</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Outstanding service! The team went above and beyond to find us the perfect property. Their market knowledge and negotiation skills saved us hundreds of thousands."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MC</div>
-                        <div>
-                            <h4>Michael Chen</h4>
-                            <p>Investment Property Owner</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Working with Emily B Realty was a game-changer. They understood exactly what we wanted and delivered beyond our expectations. True professionals!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AR</div>
-                        <div>
-                            <h4>Amanda Rodriguez</h4>
-                            <p>Malibu Resident</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-wrapper">
-                <div class="about-content">
-                    <span class="section-tag">Our Story</span>
-                    <h2 class="section-title">About Emily Atlanta Realty</h2>
-                    <p class="about-text">
-                        Emily Atlanta Realty, proudly partnered with <a href="https://www.methodatlanta.com/" target="_blank" class="method-link">Method Atlanta</a>, brings together local expertise and proven excellence in navigating the Metro Atlanta real estate market. With deep knowledge of Atlanta's diverse neighborhoods – from historic Inman Park to vibrant Midtown, charming Decatur to prestigious Buckhead – we're committed to helping you find the perfect home.
-                    </p>
-                    <p class="about-text">
-                        Our partnership with Method Atlanta means you benefit from their commitment to where expertise meets excellence. Whether you're buying your first home, upgrading to your dream property, or investing in Atlanta's thriving market, we provide personalized service and expert guidance every step of the way. Our combined local expertise and dedication to client satisfaction set us apart in the Atlanta real estate community.
-                    </p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Expert Knowledge of Atlanta Neighborhoods</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Method Atlanta Partnership & Resources</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Personalized Home Search Service</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Full-Service Buyer & Seller Representation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="about-img-placeholder">
-                        <div class="about-img-overlay">
-                            <i class="fas fa-heart"></i>
-                            <h3>Atlanta</h3>
-                            <p>Real Estate Expert</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <div class="newsletter-text">
-                    <h2>Stay Updated with Atlanta Listings</h2>
-                    <p>Subscribe to receive curated property selections and market insights delivered with Method Atlanta's commitment to excellence</p>
-                </div>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Let's Connect</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Ready to find your dream home? Experience the Method Atlanta difference with personalized, professional service</p>
-            </div>
-            <div class="contact-wrapper">
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="content-card">
+                <h2>Contact</h2>
+                <p class="contact-intro">
+                    Whether you're buying, selling, or just exploring your options, Emily is here to help you plan your next move in the Atlanta area.
+                </p>
                 <div class="contact-info">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Serving Metro Atlanta</h3>
-                        <p>Buckhead, Midtown, Virginia-Highland<br>Inman Park, Brookhaven, Decatur & More</p>
+                    <div class="contact-item">
+                        <span class="label">Call / Text</span>
+                        <a href="tel:+16672316147" class="contact-link">667-231-6147</a>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h3>Call or Text</h3>
-                        <p>(404) 555-0123<br>Available 7 Days/Week</p>
+                    <div class="contact-item">
+                        <span class="label">Office</span>
+                        <a href="tel:+14045857355" class="contact-link">404-585-7355</a>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email Us</h3>
-                        <p>emily@emilyatlantarealty.com<br>Quick Response Guaranteed</p>
+                    <div class="contact-item">
+                        <span class="label">Instagram</span>
+                        <a href="https://www.instagram.com/emily.atlanta.realty/" target="_blank" rel="noopener noreferrer" class="contact-link">@emily.atlanta.realty</a>
                     </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <h3>Follow on Instagram</h3>
-                        <p>@emily.atlanta.realty<br>Daily Property Updates</p>
+                    <div class="contact-item">
+                        <span class="label">Email</span>
+                        <a href="mailto:hello@example.com" class="contact-link">Get in Touch</a>
                     </div>
-                </div>
-                <div class="contact-form-wrapper">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" placeholder="Full Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Email Address" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="tel" id="phone" name="phone" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <select id="interest" name="interest">
-                                    <option value="">I'm interested in...</option>
-                                    <option value="buying">Buying a Property</option>
-                                    <option value="selling">Selling a Property</option>
-                                    <option value="investing">Investment Opportunities</option>
-                                    <option value="valuation">Property Valuation</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <i class="fas fa-home-lg-alt"></i>
-                        <div>
-                            <h3>Emily Atlanta Realty</h3>
-                            <p class="footer-powered">Powered by <a href="https://www.methodatlanta.com/" target="_blank" class="method-link-footer">Method Atlanta</a></p>
-                        </div>
-                    </div>
-                    <p>Your trusted Atlanta real estate expert. Helping buyers and sellers navigate Metro Atlanta's diverse neighborhoods with personalized service and local expertise. Where expertise meets excellence.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/emily.atlanta.realty/" target="_blank" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/emily.atlanta.realty" target="_blank" title="Like on Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="mailto:emily@emilyatlantarealty.com" title="Email Us"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Properties</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Popular Neighborhoods</h4>
-                    <ul>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Buckhead</a></li>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Midtown Atlanta</a></li>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Virginia-Highland</a></li>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Inman Park</a></li>
-                        <li><a href="#properties"><i class="fas fa-chevron-right"></i> Brookhaven & Decatur</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-map-marker-alt"></i> Serving All Metro Atlanta Areas</li>
-                        <li><i class="fas fa-phone"></i> (404) 555-0123</li>
-                        <li><i class="fas fa-envelope"></i> emily@emilyatlantarealty.com</li>
-                        <li><i class="fab fa-instagram"></i> @emily.atlanta.realty</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Emily Atlanta Realty. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
-        </div>
+    <footer>
+        <p>
+            Brokered by Method Real Estate Advisors ·
+            1792 Woodstock Rd, Building 100, Roswell, GA 30075 ·
+            <a href="tel:+14045857355">404-585-7355</a>
+        </p>
     </footer>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Property Modal -->
-    <div class="modal" id="propertyModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closePropertyModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="modalBody">
-                <!-- Dynamic content will be loaded here -->
-            </div>
-        </div>
-    </div>
 
     <script src="js/script.js"></script>
 </body>

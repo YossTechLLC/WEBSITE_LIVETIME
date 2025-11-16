@@ -1,548 +1,271 @@
 // ========================================
-// EMILY B REALTY - PREMIUM LUXURY REAL ESTATE
-// Enhanced JavaScript Functionality
+// PIXEL-ART CITY ANIMATION
 // ========================================
 
-// ========== PRELOADER ==========
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-    }, 1000);
-});
+class PixelCity {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.buildings = [];
+        this.stars = [];
+        this.time = 0; // 0 to 1 for full cycle
+        this.cycleDuration = 60000; // 60 seconds for full cycle
+        this.lastFrameTime = Date.now();
 
-// ========== NAVIGATION ==========
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const navbar = document.getElementById('navbar');
+        this.init();
+        this.resize();
+        this.animate();
 
-// Mobile menu toggle
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// ========== SMOOTH SCROLLING ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80; // Navbar height
-            const targetPosition = target.offsetTop - offset;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ========== ACTIVE NAVIGATION ON SCROLL ==========
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - 150)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-
-    // Navbar scroll effect
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+        window.addEventListener('resize', () => this.resize());
     }
-});
 
-// ========== STATS COUNTER ANIMATION ==========
-const counters = document.querySelectorAll('.counter');
-let countStarted = false;
+    init() {
+        // Generate buildings
+        const buildingCount = 25;
+        const baseY = 0.7; // Buildings start at 70% down the canvas
 
-function startCounters() {
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const increment = target / (duration / 16); // 60fps
-        let current = 0;
+        for (let i = 0; i < buildingCount; i++) {
+            const width = Math.floor(Math.random() * 60) + 40;
+            const height = Math.floor(Math.random() * 200) + 100;
+            const x = (i / buildingCount) * 1.1 - 0.05; // Normalized x position
 
-        const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target;
-            }
-        };
+            // Generate windows
+            const windows = [];
+            const windowCols = Math.floor(width / 15);
+            const windowRows = Math.floor(height / 20);
 
-        updateCounter();
-    });
-}
-
-// Trigger counter when stats section is visible
-const observerOptions = {
-    threshold: 0.3
-};
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !countStarted) {
-            countStarted = true;
-            startCounters();
-        }
-    });
-}, observerOptions);
-
-const statsSection = document.querySelector('.stats-bar');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-// ========== PROPERTY FILTERING ==========
-const filterButtons = document.querySelectorAll('.filter-btn');
-const propertyCards = document.querySelectorAll('.property-card');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-
-        const filterValue = button.getAttribute('data-filter');
-
-        propertyCards.forEach(card => {
-            if (filterValue === 'all') {
-                card.style.display = 'block';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 10);
-            } else {
-                const categories = card.getAttribute('data-category').split(' ');
-                if (categories.includes(filterValue)) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
+            for (let row = 0; row < windowRows; row++) {
+                for (let col = 0; col < windowCols; col++) {
+                    if (Math.random() > 0.3) { // 70% chance of window
+                        windows.push({
+                            x: col * 15 + 5,
+                            y: row * 20 + 5,
+                            size: 8
+                        });
+                    }
                 }
             }
+
+            this.buildings.push({ x, width, height, baseY, windows });
+        }
+
+        // Generate stars
+        for (let i = 0; i < 100; i++) {
+            this.stars.push({
+                x: Math.random(),
+                y: Math.random() * 0.6, // Upper 60% of sky
+                size: Math.random() * 2 + 1,
+                twinkle: Math.random()
+            });
+        }
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+
+    getSkyGradient() {
+        const { time } = this;
+        const gradient = this.ctx.createLinearGradient(0, 0, 0, this.canvas.height);
+
+        let topColor, midColor, bottomColor;
+
+        if (time < 0.33) {
+            // Night phase
+            const phase = time / 0.33;
+            topColor = this.lerpColor('#0a0f1e', '#1a1f3e', phase);
+            midColor = this.lerpColor('#1a1533', '#2a2555', phase);
+            bottomColor = this.lerpColor('#0f0a1a', '#1f1a2a', phase);
+        } else if (time < 0.66) {
+            // Sunrise phase
+            const phase = (time - 0.33) / 0.33;
+            topColor = this.lerpColor('#1a1f3e', '#4a5f8f', phase);
+            midColor = this.lerpColor('#2a2555', '#e85d75', phase);
+            bottomColor = this.lerpColor('#1f1a2a', '#f4a261', phase);
+        } else {
+            // Morning phase
+            const phase = (time - 0.66) / 0.34;
+            topColor = this.lerpColor('#4a5f8f', '#5ba3d0', phase);
+            midColor = this.lerpColor('#e85d75', '#87ceeb', phase);
+            bottomColor = this.lerpColor('#f4a261', '#b0d8f0', phase);
+        }
+
+        gradient.addColorStop(0, topColor);
+        gradient.addColorStop(0.5, midColor);
+        gradient.addColorStop(1, bottomColor);
+
+        return gradient;
+    }
+
+    lerpColor(color1, color2, factor) {
+        const c1 = this.hexToRgb(color1);
+        const c2 = this.hexToRgb(color2);
+        const r = Math.round(c1.r + (c2.r - c1.r) * factor);
+        const g = Math.round(c1.g + (c2.g - c1.g) * factor);
+        const b = Math.round(c1.b + (c2.b - c1.b) * factor);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
+    }
+
+    drawSky() {
+        this.ctx.fillStyle = this.getSkyGradient();
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawStars() {
+        // Stars visible during night and fade during sunrise
+        const starOpacity = this.time < 0.33 ? 1 : this.time < 0.66 ? 1 - (this.time - 0.33) / 0.33 : 0;
+
+        if (starOpacity > 0) {
+            this.stars.forEach(star => {
+                const twinkle = Math.sin(this.time * 10 + star.twinkle * Math.PI * 2) * 0.3 + 0.7;
+                this.ctx.fillStyle = `rgba(255, 255, 255, ${starOpacity * twinkle})`;
+                this.ctx.fillRect(
+                    star.x * this.canvas.width,
+                    star.y * this.canvas.height,
+                    star.size,
+                    star.size
+                );
+            });
+        }
+    }
+
+    drawSun() {
+        // Sun visible during sunrise and morning
+        if (this.time >= 0.33) {
+            const sunPhase = this.time < 0.66 ? (this.time - 0.33) / 0.33 : 1;
+            const sunY = 0.65 - sunPhase * 0.15; // Rise from horizon
+            const sunSize = 40 + sunPhase * 20;
+
+            const sunColor = this.time < 0.66
+                ? this.lerpColor('#ff6b35', '#ffd700', sunPhase)
+                : '#ffd700';
+
+            this.ctx.fillStyle = sunColor;
+            this.ctx.beginPath();
+            this.ctx.arc(
+                this.canvas.width * 0.85,
+                this.canvas.height * sunY,
+                sunSize,
+                0,
+                Math.PI * 2
+            );
+            this.ctx.fill();
+        }
+    }
+
+    drawBuildings() {
+        // Window glow intensity: bright at night, dim in morning
+        const windowGlow = this.time < 0.33 ? 1 : this.time < 0.66 ? 1 - (this.time - 0.33) / 0.33 : 0.2;
+
+        this.buildings.forEach(building => {
+            const x = building.x * this.canvas.width;
+            const y = building.baseY * this.canvas.height;
+
+            // Building silhouette
+            this.ctx.fillStyle = '#0a0a0f';
+            this.ctx.fillRect(x, y - building.height, building.width, building.height);
+
+            // Windows
+            building.windows.forEach(win => {
+                const glowIntensity = 200 + Math.sin(this.time * 5 + win.x + win.y) * 55;
+                this.ctx.fillStyle = `rgba(${glowIntensity}, ${glowIntensity - 50}, 100, ${windowGlow})`;
+                this.ctx.fillRect(
+                    x + win.x,
+                    y - building.height + win.y,
+                    win.size,
+                    win.size
+                );
+            });
         });
-    });
-});
+    }
 
-// ========== SCROLL ANIMATIONS ==========
-const animateOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+    animate() {
+        const now = Date.now();
+        const deltaTime = now - this.lastFrameTime;
+        this.lastFrameTime = now;
+
+        // Update cycle time
+        this.time += deltaTime / this.cycleDuration;
+        if (this.time > 1) this.time -= 1;
+
+        // Clear and draw
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.drawSky();
+        this.drawStars();
+        this.drawSun();
+        this.drawBuildings();
+
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// ========================================
+// SMOOTH SCROLLING
+// ========================================
+
+function smoothScroll(target) {
+    const element = document.querySelector(target);
+    if (element) {
+        const offsetTop = element.offsetTop;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Nav link smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+        smoothScroll(target);
+
+        // Close mobile menu if open
+        const navLinks = document.querySelector('.nav-links');
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
         }
     });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
 });
 
-// Animate property cards
+// CTA button scroll
+document.querySelectorAll('[data-scroll-to]').forEach(button => {
+    button.addEventListener('click', function() {
+        const target = '#' + this.getAttribute('data-scroll-to');
+        smoothScroll(target);
+    });
+});
+
+// ========================================
+// MOBILE NAVIGATION TOGGLE
+// ========================================
+
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mobileToggle.classList.toggle('active');
+});
+
+// ========================================
+// INITIALIZE ANIMATION
+// ========================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    propertyCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        animateOnScroll.observe(card);
-    });
-
-    // Animate service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.5s ease ${index * 0.1}s`;
-        animateOnScroll.observe(card);
-    });
-
-    // Animate testimonial cards
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    testimonialCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.5s ease ${index * 0.1}s`;
-        animateOnScroll.observe(card);
-    });
-});
-
-// ========== SCROLL TO TOP BUTTON ==========
-const scrollTopBtn = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// ========== PROPERTY MODAL ==========
-function openPropertyModal(propertyId) {
-    const modal = document.getElementById('propertyModal');
-    const modalBody = document.getElementById('modalBody');
-
-    // Property data
-    const properties = {
-        1: {
-            title: 'Luxury Buckhead Estate',
-            location: 'Buckhead, Atlanta',
-            price: '$2,495,000',
-            beds: 5,
-            baths: 4.5,
-            sqft: '5,200',
-            description: 'This stunning gated estate in prestigious Buckhead offers panoramic city views, premium finishes throughout, and resort-style living. The open-concept design features soaring ceilings, chef\'s kitchen, and seamless indoor-outdoor entertaining spaces perfect for Atlanta\'s lifestyle.',
-            features: [
-                'Gated community security',
-                'Chef\'s gourmet kitchen',
-                'Resort-style pool & spa',
-                'Home theater room',
-                'Wine cellar',
-                'Atlanta skyline views',
-                '3-car garage',
-                'Outdoor kitchen & fireplace'
-            ]
-        },
-        2: {
-            title: 'Modern Midtown Penthouse',
-            location: 'Midtown, Atlanta',
-            price: '$1,895,000',
-            beds: 3,
-            baths: 3.5,
-            sqft: '3,100',
-            description: 'A breathtaking penthouse in the heart of Midtown offering spectacular Atlanta skyline views and a private rooftop terrace. This architectural masterpiece features floor-to-ceiling windows, modern luxury finishes, and walkability to Piedmont Park, restaurants, and entertainment.',
-            features: [
-                'Private rooftop terrace',
-                'Floor-to-ceiling windows',
-                'Skyline & park views',
-                'Walking distance to Piedmont Park',
-                'Modern gourmet kitchen',
-                'Luxury spa bathrooms',
-                'Concierge service',
-                'Secure garage parking'
-            ]
-        },
-        3: {
-            title: 'Virginia-Highland Charmer',
-            location: 'Virginia-Highland, Atlanta',
-            price: '$1,350,000',
-            beds: 4,
-            baths: 3,
-            sqft: '2,800',
-            description: 'A beautifully renovated craftsman bungalow combining timeless charm with modern amenities. Located in walkable Virginia-Highland, this gem features original hardwoods, updated kitchen and baths, and a private backyard oasis. Steps to shops, restaurants, and parks.',
-            features: [
-                'Original hardwood floors',
-                'Modern chef\'s kitchen',
-                'Updated luxury bathrooms',
-                'Private backyard oasis',
-                'Front porch',
-                'Walk to Highland Avenue',
-                'Original craftsman details',
-                'Home office'
-            ]
-        },
-        4: {
-            title: 'Elegant Brookhaven Home',
-            location: 'Brookhaven, Atlanta',
-            price: '$1,750,000',
-            beds: 5,
-            baths: 4.5,
-            sqft: '4,800',
-            description: 'A stunning traditional estate in sought-after Brookhaven offering timeless elegance and modern luxury. Features include a gourmet kitchen, resort-style pool, outdoor living spaces, and proximity to top-rated schools, shopping, and dining.',
-            features: [
-                'Resort-style pool',
-                'Outdoor living & kitchen',
-                'Gourmet chef\'s kitchen',
-                'Master on main',
-                'Top-rated schools nearby',
-                'Finished basement',
-                'Private backyard',
-                '3-car garage'
-            ]
-        },
-        5: {
-            title: 'Historic Inman Park Townhome',
-            location: 'Inman Park, Atlanta',
-            price: '$975,000',
-            beds: 3,
-            baths: 2.5,
-            sqft: '2,400',
-            description: 'A meticulously restored Victorian townhome in historic Inman Park blending original character with modern updates. Features include exposed brick, original hardwoods, rooftop deck, and walkability to the BeltLine, Krog Street Market, and Inman Park restaurants.',
-            features: [
-                'Victorian architecture',
-                'Rooftop deck',
-                'Exposed brick walls',
-                'Original hardwood floors',
-                'Walk to BeltLine',
-                'Near Krog Street Market',
-                'Modern kitchen & baths',
-                'Private courtyard'
-            ]
-        },
-        6: {
-            title: 'Charming Decatur Home',
-            location: 'Decatur, Atlanta',
-            price: '$825,000',
-            beds: 4,
-            baths: 3,
-            sqft: '3,200',
-            description: 'A spacious and charming family home in vibrant Decatur near top-rated schools, shops, and restaurants. This well-maintained property features an updated kitchen, hardwood floors, large backyard, and the quintessential Decatur lifestyle just steps away.',
-            features: [
-                'Top-rated Decatur schools',
-                'Walk to downtown Decatur',
-                'Updated kitchen',
-                'Hardwood floors throughout',
-                'Large backyard',
-                'Front porch',
-                'Finished basement',
-                'Near restaurants & shops'
-            ]
-        }
-    };
-
-    const property = properties[propertyId];
-
-    // Create modal content
-    const content = `
-        <div style="padding: 50px;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px; color: var(--primary-color);">${property.title}</h2>
-            <p style="color: var(--text-light); margin-bottom: 20px; font-size: 1.1rem;">
-                <i class="fas fa-map-marker-alt"></i> ${property.location}
-            </p>
-
-            <div style="display: flex; gap: 30px; margin-bottom: 30px; padding: 20px; background: var(--bg-light); border-radius: 10px;">
-                <div>
-                    <i class="fas fa-bed" style="color: var(--secondary-color);"></i> <strong>${property.beds}</strong> Bedrooms
-                </div>
-                <div>
-                    <i class="fas fa-bath" style="color: var(--secondary-color);"></i> <strong>${property.baths}</strong> Bathrooms
-                </div>
-                <div>
-                    <i class="fas fa-ruler-combined" style="color: var(--secondary-color);"></i> <strong>${property.sqft}</strong> sq ft
-                </div>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px; color: var(--primary-color);">About This Property</h3>
-                <p style="line-height: 1.8; color: var(--text-light);">${property.description}</p>
-            </div>
-
-            <div style="margin-bottom: 30px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px; color: var(--primary-color);">Features & Amenities</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                    ${property.features.map(feature => `
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>${feature}</span>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-
-            <div style="padding-top: 30px; border-top: 2px solid #eee;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                    <div>
-                        <p style="color: var(--text-light); margin-bottom: 5px;">Example Price Range</p>
-                        <h3 style="font-size: 2.5rem; color: var(--secondary-color);">${property.price}</h3>
-                    </div>
-                    <button onclick="scrollToContact()" class="btn btn-secondary" style="padding: 15px 40px;">
-                        <i class="fas fa-calendar-check"></i> Contact Emily
-                    </button>
-                </div>
-                <div style="background: var(--bg-light); padding: 25px; border-radius: 10px; text-align: center;">
-                    <p style="color: var(--text-dark); margin-bottom: 15px; font-size: 1.05rem;">
-                        <strong>This is a sample property.</strong> Search Method Atlanta's complete MLS database for current listings:
-                    </p>
-                    <a href="https://www.methodatlanta.com/search/results" target="_blank" class="btn btn-primary" style="padding: 15px 40px;">
-                        <i class="fas fa-search"></i> Search All Available Properties
-                    </a>
-                </div>
-            </div>
-        </div>
-    `;
-
-    modalBody.innerHTML = content;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closePropertyModal() {
-    const modal = document.getElementById('propertyModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function scrollToContact() {
-    closePropertyModal();
-    setTimeout(() => {
-        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
-}
-
-// Close modal when clicking outside
-document.getElementById('propertyModal').addEventListener('click', (e) => {
-    if (e.target.id === 'propertyModal') {
-        closePropertyModal();
-    }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closePropertyModal();
-    }
-});
-
-// ========== CONTACT FORM ==========
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const interest = document.getElementById('interest').value;
-        const message = document.getElementById('message').value;
-
-        // Simple validation
-        if (!name || !email || !message) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-
-        // Show success message
-        alert(`Thank you, ${name}! We've received your inquiry and will contact you shortly.`);
-
-        // Reset form
-        contactForm.reset();
-    });
-}
-
-// ========== NEWSLETTER FORM ==========
-const newsletterForm = document.getElementById('newsletterForm');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const emailInput = newsletterForm.querySelector('input[type="email"]');
-        const email = emailInput.value;
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-
-        // Show success message
-        alert('Thank you for subscribing! You\'ll receive exclusive property listings in your inbox.');
-
-        // Reset form
-        newsletterForm.reset();
-    });
-}
-
-// ========== HERO SCROLL INDICATOR ==========
-const heroScroll = document.querySelector('.hero-scroll');
-if (heroScroll) {
-    heroScroll.addEventListener('click', () => {
-        document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });
-    });
-}
-
-// ========== LAZY LOADING EFFECT ==========
-// Add fade-in effect to elements as they enter viewport
-const fadeElements = document.querySelectorAll('.service-card, .property-card, .testimonial-card, .info-card');
-const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, {
-    threshold: 0.1
-});
-
-fadeElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    fadeObserver.observe(element);
-});
-
-// ========== FORM INPUT ANIMATIONS ==========
-const formInputs = document.querySelectorAll('.form-group input, .form-group textarea, .form-group select');
-formInputs.forEach(input => {
-    input.addEventListener('focus', (e) => {
-        e.target.style.transform = 'translateY(-2px)';
-        e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-    });
-
-    input.addEventListener('blur', (e) => {
-        e.target.style.transform = 'translateY(0)';
-        e.target.style.boxShadow = 'none';
-    });
-});
-
-// ========== CONSOLE MESSAGE ==========
-console.log('%c🏠 Emily B Realty', 'font-size: 24px; font-weight: bold; color: #c9a961; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);');
-console.log('%cPremium Luxury Real Estate', 'font-size: 14px; color: #636e72; margin-top: 10px;');
-console.log('%cWebsite built with excellence and luxury in mind.', 'font-size: 12px; color: #999; margin-top: 5px;');
-
-// ========== PERFORMANCE LOGGING ==========
-window.addEventListener('load', () => {
-    if (performance.timing) {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log(`%cPage loaded in ${(loadTime / 1000).toFixed(2)}s`, 'color: #c9a961; font-weight: bold;');
-    }
+    const canvas = document.getElementById('cityCanvas');
+    new PixelCity(canvas);
 });
